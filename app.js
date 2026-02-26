@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
+import cors from "cors"
 dotenv.config();
 const app= express();
 const port=process.env.PORT;
@@ -16,6 +17,13 @@ import Accountrouter from "./routers/Account.js"
 
 app.use(express.json());
 app.use(cookieParser())
+app.use(
+    cors({
+  origin: 'https://makhana-0nl6.onrender.com', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+})
+)
 app.use("/api/user",Accountrouter);
 
 
