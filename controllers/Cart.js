@@ -41,7 +41,7 @@ if (!email) {
 
             await userCart.save(); 
 
-            return res.json({ success: true, message: "Product updated" });
+            return res.json({ sucess: true, message: "Product updated" });
         }
 
         const newCart = new addToCart({
@@ -51,7 +51,7 @@ if (!email) {
 
         await newCart.save();
 
-        return res.json({ success: true, message: "Product added" });
+        return res.json({ sucess: true, message: "Product added" });
 
     } catch (error) {
         console.log(error);
@@ -64,6 +64,19 @@ export const Sub = async (req, res) => {
     try {
         const email = req.email;
         const { productname } = req.body;
+        if (!productname) {
+    return res.json({
+        sucess: false,
+        message: "Product name missing!"
+    });
+}
+
+if (!email) {
+    return res.json({
+        sucess: false,
+        message: "User email missing!"
+    });
+}
 
 
         let userCart = await addToCart.findOne({ useremail: email });
@@ -74,24 +87,29 @@ export const Sub = async (req, res) => {
 
             userCart.product = userCart.product.map(item => {
                 if (item.name === productname) {
-                    item.quantity -= 1;  itemFound = true;
+                    item.quantity -= 1; 
+                    
                 }
                 return item;
+            }).filter((item)=>{
+                if(item.quantity>0){
+                    return item
+                }
             });
 
-          
+          if(userCart.product)
 
             await userCart.save(); 
 
-            return res.json({ success: true, message: "Product sub updated" });
+            return res.json({ sucess: true, message: "Product sub updated" });
         }
 
     
 
-        return res.json({ success: true, message: "Product subtrac" });
+        return res.json({ sucess: true, message: "Product subtrac" });
 
     } catch (error) {
         console.log(error);
-        return res.json({ success: false, message: "Server error while adding item" });
+        return res.json({ sucess: false, message: "Server error while adding item" });
     }
 };
