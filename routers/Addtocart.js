@@ -4,24 +4,29 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import { Add, Sub } from "../controllers/Cart.js";
 const router=express.Router();
-const isAuth=(req,res,next)=>{
-try{
-       const token = req.cookies.userToken; ;
-    if(!token){
-      return  res.staus(402).send({sucess:false,message:"token is not present "});
-    }
-    const decode =jwt.verify(token,process.env.JWTSECRET);
-    if(!decode){
-    return res.staus(402).send({sucess:false,message:"unAuthrizetoken"});
-    }
-req.email=decode.email;
-next();
 
-}catch(error){
-    console.log("error while outhantication");
-    return res.staus(500).send({sucess:false,message:"error while Authication the user"})
-}
-}
+const isAuth = (req, res, next) => {
+  try {
+    const token = req.cookies.userToken;
+
+    if (!token) {
+      return res.status(402).json({ success: false, message: "Token not present" });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWTSECRET);
+
+    if (!decoded) {
+      return res.status(402).json({ success: false, message: "Unauthorized token" });
+    }
+
+    req.email = decoded.email;
+    next();
+
+  } catch (error) {
+    console.log("error while authentication:", error);
+    return res.status(500).json({ success: false, message: "Error during authentication" });
+  }
+};
 router.post("/add",isAuth,Add);
 router.post("/sub",isAuth,Sub);
 export default router
