@@ -15,7 +15,7 @@ export const Login=async(req,res)=>{
         }
         const token = JWT.sign({email:email},process.env.JWTSECRET);
         res.cookie("userToken",token);
-        return res.status(200).json({sucess:true,message:"User Login Sucessfully"})
+        return res.status(200).json({sucess:true,message:"User Login Sucessfully" ,name:data.name,email:data.email})
 
     }catch(err){
         console.log(err)
@@ -35,7 +35,7 @@ export const register =async(req,res)=>{
        newdata.save();
        const token = JWT.sign({email:email},process.env.JWTSECRET);
        res.cookie("userToken",token);
-       res.status(201).json({sucess:true ,message:"User is createed sucessfull"})
+       res.status(201).json({sucess:true ,message:"User is createed sucessfull" ,name:name,email:email})
        
         
     }catch(error){

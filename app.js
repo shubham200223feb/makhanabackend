@@ -11,7 +11,8 @@ import database from "./lib/database.js";
 
 
 
-import Accountrouter from "./routers/Account.js"
+import Accountrouter from "./routers/Account.js";
+import Cart from "./routers/Addtocart.js"
 
 
 
@@ -25,6 +26,7 @@ app.use(
 })
 )
 app.use("/api/user",Accountrouter);
+app.use("/api/cart",Cart);
 
 
 
