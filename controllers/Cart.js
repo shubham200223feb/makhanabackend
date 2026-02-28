@@ -7,7 +7,19 @@ export const Add = async (req, res) => {
 
 
         let userCart = await addToCart.findOne({ useremail: email });
+        if (!productname) {
+    return res.json({
+        sucess: false,
+        message: "Product name missing!"
+    });
+}
 
+if (!email) {
+    return res.json({
+        sucess: false,
+        message: "User email missing!"
+    });
+}
         
         if (userCart) {
             let itemFound = false;
