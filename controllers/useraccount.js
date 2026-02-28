@@ -14,7 +14,11 @@ export const Login=async(req,res)=>{
             return res.status(402).json({sucess:false , message:"password inncort plss try again"})
         }
         const token = JWT.sign({email:email},process.env.JWTSECRET);
-        res.cookie("userToken",token);
+        res.cookie("userToken",token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none"
+});
         return res.status(200).json({sucess:true,message:"User Login Sucessfully" ,name:data.name,email:data.email})
 
     }catch(err){
@@ -34,7 +38,11 @@ export const register =async(req,res)=>{
        const newdata =new Users({email:email,name:name,password:hashpassword});
        newdata.save();
        const token = JWT.sign({email:email},process.env.JWTSECRET);
-       res.cookie("userToken",token);
+       res.cookie("userToken",token, token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "none"
+});
        res.status(201).json({sucess:true ,message:"User is createed sucessfull" ,name:name,email:email})
        
         
