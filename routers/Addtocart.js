@@ -22,6 +22,6 @@ next();
     return res.staus(500).send({sucess:false,message:"error while Authication the user"})
 }
 }
-router.post("/add",Add);
-router.post("/sub",Sub);
+router.post("/add",isAuth,Add);
+router.post("/sub",isAuth,Sub);
 export default router
