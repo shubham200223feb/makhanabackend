@@ -6,7 +6,7 @@ import { Add, Sub } from "../controllers/Cart.js";
 const router=express.Router();
 const isAuth=(req,res,next)=>{
 try{
-    const token = req.userToken;
+       const token = req.cookies.userToken; ;
     if(!token){
       return  res.staus(402).send({sucess:false,message:"token is not present "});
     }
