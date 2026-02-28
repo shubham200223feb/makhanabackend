@@ -29,7 +29,7 @@ export const Add = async (req, res) => {
 
             await userCart.save(); 
 
-            return res.send({ success: true, message: "Product updated" });
+            return res.json({ success: true, message: "Product updated" });
         }
 
         const newCart = new addToCart({
@@ -39,11 +39,11 @@ export const Add = async (req, res) => {
 
         await newCart.save();
 
-        return res.send({ success: true, message: "Product added" });
+        return res.json({ success: true, message: "Product added" });
 
     } catch (error) {
         console.log(error);
-        return res.send({ success: false, message: "Server error while adding item" });
+        return res.json({ success: false, message: "Server error while adding item" });
     }
 };
 
@@ -71,15 +71,15 @@ export const Sub = async (req, res) => {
 
             await userCart.save(); 
 
-            return res.send({ success: true, message: "Product updated" });
+            return res.json({ success: true, message: "Product sub updated" });
         }
 
     
 
-        return res.send({ success: true, message: "Product added" });
+        return res.json({ success: true, message: "Product subtrac" });
 
     } catch (error) {
         console.log(error);
-        return res.send({ success: false, message: "Server error while adding item" });
+        return res.json({ success: false, message: "Server error while adding item" });
     }
 };
