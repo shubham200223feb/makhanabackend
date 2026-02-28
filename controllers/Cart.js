@@ -43,7 +43,7 @@ export const Add = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        return res.json({ success: false, message: "Server error while adding item" });
+        return res.json({ success: false, message: "Server error while adding item" ,err:error});
     }
 };
 
