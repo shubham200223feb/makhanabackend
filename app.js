@@ -31,7 +31,7 @@ app.use(
 app.use("/api/user",Accountrouter);
 app.use("/api/cart",Cart);;
 app.use("/api/",Product);
-app.use("/api/cart/",Listofproduct)
+app.use("/api/cart",Listofproduct)
 
 
 
