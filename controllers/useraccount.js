@@ -11,7 +11,7 @@ export const Login=async(req,res)=>{
         }
         const comapare =  bcrypt.compareSync(password,data.password);
         if(!comapare){
-            return res.status(402).json({sucess:false , message:"password inncort plss try again"})
+            return res.json({sucess:false , message:"password inncort plss try again"})
         }
         const token = JWT.sign({email:email},process.env.JWTSECRET);
         res.cookie("userToken",token, {
