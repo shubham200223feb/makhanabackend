@@ -1,6 +1,7 @@
 import Product from "../models/product.js";
 import addToCart from "../models/addtocart.js";
 import express from "express";
+import jwt from "jsonwebtoken"
 import { findproduct } from "../controllers/buycontrollers.js";
 const router= express.Router();
 const isAuth = (req, res, next) => {
