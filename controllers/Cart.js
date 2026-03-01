@@ -113,3 +113,20 @@ if (!email) {
         return res.json({ sucess: false, message: "Server error while adding item" });
     }
 };
+export const count =async(req,res)=>{
+try{
+    const email=req.email;
+    const{productname}= req.body;
+    console.log(email);
+    const response = await addToCart.findOne({useremail:email});
+    if(!response){
+        return res.json({message:"this is you are new one",quantity:0})
+    }
+    const items = response.product.find((p)=>{if(p.name==productname){return p; }});
+
+    return res.json({message:"person present",count:items?items.quantity:0})
+
+}catch(err){
+return res.json({message:"error while findeing count server error ",err:err});
+}
+}

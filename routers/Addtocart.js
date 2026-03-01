@@ -2,7 +2,7 @@ import Users from "../models/user.js";
 import addToCart from "../models/addtocart.js";
 import express from "express";
 import jwt from "jsonwebtoken";
-import { Add, Sub } from "../controllers/Cart.js";
+import { Add, count, Sub } from "../controllers/Cart.js";
 const router=express.Router();
 
 const isAuth = (req, res, next) => {
@@ -29,4 +29,5 @@ const isAuth = (req, res, next) => {
 };
 router.post("/add",isAuth,Add);
 router.post("/sub",isAuth,Sub);
+router.post("/get",isAuth,count)
 export default router
