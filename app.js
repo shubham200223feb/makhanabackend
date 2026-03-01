@@ -15,6 +15,7 @@ import Accountrouter from "./routers/Account.js";
 import Cart from "./routers/Addtocart.js";
 import  Product from "./routers/Addproduct.js"
 import { addproduct } from "./controllers/Product.js";
+import Listofproduct from "./routers/buy.js"
 
 
 
@@ -29,7 +30,8 @@ app.use(
 )
 app.use("/api/user",Accountrouter);
 app.use("/api/cart",Cart);;
-app.use("/api/",Product)
+app.use("/api/",Product);
+app.use("/api/",Listofproduct)
 
 
 
