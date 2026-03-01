@@ -124,7 +124,7 @@ try{
     }
     const items = response.product.find((p)=>{if(p.name==productname){return p; }});
 
-    return res.json({message:"person present",count:items?items.quantity:0})
+    return res.json({message:"person present",quantity:items?items.quantity:0})
 
 }catch(err){
 return res.json({message:"error while findeing count server error ",err:err});
