@@ -59,8 +59,8 @@ await Product.updateOne(
   { $pull: { product: { name: productname } } }
 );
 
-return res.staus(200).send({sucess:true})
+return res.status(200).send({sucess:true})
 }catch(err){
-  return res.staus(500).send({sucess:false,err:err,message:"error while perform delete operation"})
+  return res.status(500).send({sucess:false,err:err,message:"error while perform delete operation"})
 }
 }
