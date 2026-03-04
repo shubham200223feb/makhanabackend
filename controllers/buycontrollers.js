@@ -54,10 +54,20 @@ const email= req.email;
 
 try{
   const{productname}= req.body
-await Product.updateOne(
-  {useremail : email },
-  { $pull: { product: { name: productname } } }
-);
+const userCart = await Product.findOne({ useremail: email });
+
+    if (!userCart) {
+      return res.status(404).send({ success: false, msg: "User not found" });
+    }
+
+    
+    userCart.product = userCart.product.filter(
+      (item) => item.name !== productname
+    );
+
+   
+    await userCart.save();
+
 
 return res.status(200).send({sucess:true})
 }catch(err){
