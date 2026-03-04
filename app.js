@@ -13,7 +13,7 @@ import database from "./lib/database.js";
 //   key_secret:process.env.RAZORPAY_KEY_SECRET
 // })
 
-
+// removing the razorpay
 
 import Accountrouter from "./routers/Account.js";
 import Cart from "./routers/Addtocart.js";
