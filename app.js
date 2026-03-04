@@ -18,9 +18,9 @@ import database from "./lib/database.js";
 import Accountrouter from "./routers/Account.js";
 import Cart from "./routers/Addtocart.js";
 import  Product from "./routers/Addproduct.js"
-import { addproduct } from "./controllers/Product.js";
+// import { addproduct } from "./controllers/Product.js";
 import Listofproduct from "./routers/buy.js"
-import PaymentRouter from "./routers/Payment.js"
+// import PaymentRouter from "./routers/Payment.js"
 
 
 
@@ -37,7 +37,7 @@ app.use("/api/user",Accountrouter);
 app.use("/api/cart",Cart);;
 app.use("/api/",Product);
 app.use("/api/cart",Listofproduct);
-app.use("/payment",PaymentRouter);
+// app.use("/payment",PaymentRouter);
 
 
 
