@@ -2,16 +2,16 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import Razorpay from "razorpay"
 dotenv.config();
+import Razorpay from "razorpay"
 const app= express();
 const port=process.env.PORT;
 import database from "./lib/database.js";
 
-export const instance= new Razorpay({
-  kay_id:process.env.RAZORPAY_KEY_ID,
-  key_secret:process.env.RAZORPAY_KEY_SECRET
-})
+// export const instance= new Razorpay({
+//   kay_id:process.env.RAZORPAY_KEY_ID,
+//   key_secret:process.env.RAZORPAY_KEY_SECRET
+// })
 
 
 
