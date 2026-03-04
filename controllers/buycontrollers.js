@@ -54,7 +54,7 @@ const email= req.email;
 
 try{
   const{productname}= req.body
-const userCart = await Product.findOne({ useremail: email });
+const userCart = await addToCart.findOne({ useremail: email });
 
     if (!userCart) {
       return res.status(200).json({ sucess: true, msg: "userhinaji mila bhai" ,email:email });
