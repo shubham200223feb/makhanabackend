@@ -8,10 +8,10 @@ const app= express();
 const port=process.env.PORT;
 import database from "./lib/database.js";
 
-// export const instance= new Razorpay({
-//   kay_id:process.env.RAZORPAY_KEY_ID,
-//   key_secret:process.env.RAZORPAY_KEY_SECRET
-// })
+export const instance= new Razorpay({
+  kay_id:process.env.RAZORPAY_KEY_ID,
+  key_secret:process.env.RAZORPAY_KEY_SECRET
+})
 
 
 
@@ -20,7 +20,7 @@ import Cart from "./routers/Addtocart.js";
 import  Product from "./routers/Addproduct.js"
 // import { addproduct } from "./controllers/Product.js";
 import Listofproduct from "./routers/buy.js"
-// import PaymentRouter from "./routers/Payment.js"
+import PaymentRouter from "./routers/Payment.js"
 
 
 
@@ -37,7 +37,7 @@ app.use("/api/user",Accountrouter);
 app.use("/api/cart",Cart);;
 app.use("/api/",Product);
 app.use("/api/cart",Listofproduct);
-// app.use("/payment",PaymentRouter);
+app.use("/payment",PaymentRouter);
 
 
 
