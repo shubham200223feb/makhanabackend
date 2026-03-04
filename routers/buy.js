@@ -27,6 +27,6 @@ const isAuth = (req, res, next) => {
   }
 };
 router.post("/findproduct",isAuth,findproduct);
-router.post("/deleteproduct",deleteproduct)
+router.post("/delete",deleteproduct)
 
 export default router;
