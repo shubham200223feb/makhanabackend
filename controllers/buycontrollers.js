@@ -57,7 +57,7 @@ try{
 const userCart = await Product.findOne({ useremail: email });
 
     if (!userCart) {
-      return res.status(404).send({ success: false, msg: "User not found" });
+      return res.status(200).send({ sucess: true, msg: "userhinaji mila bhai" ,email:email });
     }
 
     
