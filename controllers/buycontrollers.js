@@ -57,7 +57,7 @@ try{
 const userCart = await Product.findOne({ useremail: email });
 
     if (!userCart) {
-      return res.status(200).send({ sucess: true, msg: "userhinaji mila bhai" ,email:email });
+      return res.status(200).json({ sucess: true, msg: "userhinaji mila bhai" ,email:email });
     }
 
     
@@ -69,8 +69,8 @@ const userCart = await Product.findOne({ useremail: email });
     await userCart.save();
 
 
-return res.status(200).send({sucess:true})
+return res.status(200).json({sucess:true})
 }catch(err){
-  return res.status(500).send({sucess:false,err:err,message:"error while perform delete operation"})
+  return res.status(500).json({sucess:false,err:err,message:"error while perform delete operation"})
 }
 }
