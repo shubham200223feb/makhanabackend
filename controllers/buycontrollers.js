@@ -8,6 +8,7 @@ export const findproduct = async (req, res) => {
     let producturl = [];
     let productprices = [];
     let productname = [];
+    let itemnumber=[];
 
     const cart = await addToCart.findOne({ useremail: email });
 
@@ -26,6 +27,7 @@ export const findproduct = async (req, res) => {
         producturl.push(productdetail.url);
         productname.push(productdetail.name);
         productprices.push(productdetail.price);
+        itemnumber.push(item.quantity);
       }
     }
 
@@ -35,6 +37,7 @@ export const findproduct = async (req, res) => {
       url: producturl,
       name: productname,
       price: productprices,
+      itemnumber:itemnumber
     });
 
   } catch (err) {
