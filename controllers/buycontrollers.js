@@ -49,3 +49,18 @@ export const findproduct = async (req, res) => {
     });
   }
 };
+export const deleteproduct = async(req,res)=>{
+const email= req.email;
+
+try{
+  const{productname}= req.body
+await Product.updateOne(
+  {useremail : email },
+  { $pull: { product: { name: productname } } }
+);
+
+return res.staus(200).send({sucess:true})
+}catch(err){
+  return res.staus(500).send({sucess:false,err:err,message:"error while perform delete operation"})
+}
+}

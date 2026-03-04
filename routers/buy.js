@@ -2,7 +2,7 @@ import Product from "../models/product.js";
 import addToCart from "../models/addtocart.js";
 import express from "express";
 import jwt from "jsonwebtoken"
-import { findproduct } from "../controllers/buycontrollers.js";
+import { deleteproduct, findproduct } from "../controllers/buycontrollers.js";
 const router= express.Router();
 const isAuth = (req, res, next) => {
   try {
@@ -27,5 +27,6 @@ const isAuth = (req, res, next) => {
   }
 };
 router.post("/findproduct",isAuth,findproduct);
+router.post("/deleteproduct",deleteproduct)
 
 export default router;
